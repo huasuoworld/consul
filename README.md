@@ -63,7 +63,7 @@ zookeeper.address=zookeeper://192.168.99.100:2181
 zookeeper.properties=/usr/local/logs/jianxinDAO.properties
 
 
-
+#project2
 #activemq
 #dev
 activemq.url=tcp://192.168.99.100:61616
@@ -103,26 +103,8 @@ url=jdbc\:mysql\://103.21.117.60:3306/pro_zbt?useUnlcode\=1&characterEncoding\=u
 username1=root
 password1=ZBT123456test007
 
-
-#项目域名配置
-#项目名10.58.134.20
-SITE_NAME=微匠周边通测试
-#项目访问url
-BASE_URL=http://localhost:8080/zbt
-#web项目访问url
-BASE_WEB_URL=http://test.zbtc.jiangxindaojia.com
-
-#静态资源服务器地址，存放js库,css,网站原生图片 等
-STATIC_URL=http://localhost:8080/zbt/resources
-
-#图片服务器地址，存放用户上传的图片、视频等
-IMG_URL=http://localhost:8080/zbt/imgs
-
-#未登录等操作时，重定向地址
-SEND_REDIRECT=/admin/sign/in?urlContinue=
-
-#系统过滤
-SYSTEM_STATIC_RESOURCE=css,js,gif,jpg,png,woff,ttf,eot,svg,otf
-SYSTEM_URL_LOGIN=/admin/sign/in,/admin/code,/admin/sign/login
-SYSTEM_URL_OPEN=/admin,/admin/sign/out,/admin/sign/info,/panel/navigation/getNavigationById,/trend/region/getRegionByPid,/trend/region/getChilds,/casuser/status/edit,/casuser/delete,/casuser/sign/isUsernameAvailable,/storeContent/checkCompanyName,/storeContent/checkStoreName,/storeApp/checkAppName,/storeApp/getCategoryIdTwo,/channelInfo/checkChannelName,/channelInfo/checkEnChannelName,/channelAppCategory/getAppCategoryInfo,/advertBoard/getBoard,/advertContent/publish,/advertBoard/getBoardByPageId,/advertContent/getStoreAppByChannelId,/advertBoard/publish,/btsDailyAccount/getAccountTotal,/btsPaymentInfo/getAccountTotal,/btsAccountSeting/checkChannel,/version/publish,/navigation/publish,/adminPermission/assignPermission,/adminPermission/assignPermissionAll,/intergralUseHistory/exportFileToMail,/coupons/selectStoreByChannel,/coupons/checkCouponsName,/coupons/giveMesCode,/casuser/page,/storeContent/page,/storeAppCategory/page,/storeApp/page,/storeApp/pagelist,/channelInfo/page,/advertContent/page,/advertBoard/page,/advertPage/page,/ctmOrder/page,/ctmOrderRefund/page_refund,/smsTemplate/page,/btsDailyAccount/page,/btsPaymentInfo/page_order,/btsPaymentInfo/page_refund,/btsPayment/page,/btsAccountSeting/page,/channelUser/page,/storeUser/page,/version/page,/navigation/page,/systemParam/page,/adminUser/page,/adminUserGroup/page,/adminPermission/page,/contactUs/companyPage,/contactUs/storePage,/rechargeGoods/page,/redeemTemplate/page,/redeemCode/page,/intergralUseHistory/page,/ctmOrder/ctmOrderOutExcel,/ctmOrder/channel_page,/channelViewController/integralDetail
-SYSTEM_URL_API=/api
+<dependency>
+		    <groupId>com.ecwid.consul</groupId>
+		    <artifactId>consul-api</artifactId>
+		    <version>1.2.1</version>
+		</dependency>
