@@ -25,8 +25,8 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:weijiang/jiangxinDAO/mybatis/mybatis-config.xml" />
-		<property name="mapperLocations" value="classpath*:weijiang/jiangxinDAO/mybatis/mapper/*.xml"></property> 
+		<property name="configLocation" value="classpath:xxx/mybatis/mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath*:xxx/mybatis/mapper/*.xml"></property> 
 	</bean>
 	
 	<!-- 1、配置事务管理器 -->
@@ -36,7 +36,7 @@
 
 	<!-- scan for mappers and let them be autowired -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="weijiang.jiangxinDAO.dao" />
+		<property name="basePackage" value="xxx.dao" />
 		<!-- <property name="sqlSessionFactory" ref="sqlSessionFactory" /> -->
 	</bean>
 
