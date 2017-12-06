@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import com.hua.sso.service.TicketManagerService;
 import com.hua.sso.util.CertificateCoder;
 
-@Service("ticketManagerService")
-public class TicketManagerServiceImpl implements TicketManagerService {
+@Service("serverTicketManagerService")
+public class ServerTicketManagerServiceImpl implements TicketManagerService {
 	
 	@Autowired
 	private RedisTemplate<String, String> redisTemplate;
