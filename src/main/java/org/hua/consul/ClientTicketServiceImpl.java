@@ -20,8 +20,8 @@ import com.hua.service.TicketManagerService;
 import com.hua.util.CertificateCoder;
 import com.hua.util.SSLClient;
 
-@Service("TicketManagerService")
-public class TicketManagerServiceImpl implements TicketManagerService {
+@Service("clientTicketManagerService")
+public class ClientTicketManagerServiceImpl implements TicketManagerService {
 	
 	private final static Logger LOG = LoggerFactory.getLogger(CgbStoreTicketManagerServiceImpl.class);
 
