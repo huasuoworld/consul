@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans        
+    http://www.springframework.org/schema/beans/spring-beans.xsd        
+    http://code.alibabatech.com/schema/dubbo        
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    
+    <dubbo:application name="xxx"  />
+ 
+    
+    <!-- 设置延迟时间，超时时间，失败重试次数 -->
+    <dubbo:provider  delay="-1" timeout="10000" retries="3"/>
+    
+    <!-- 使用multicast广播注册中心暴露服务地址 -->
+    <!-- <dubbo:registry address="multicast://xxx:2181" /> -->
+    
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry address="${zookeeper.address}"  file="${zookeeper.properties}"   />
+
+
+
+    <dubbo:protocol name="dubbo" port="20881" />
+    
+    <dubbo:reference id="xxx" interface="xxx.Service" />
+    <dubbo:service interface="xxx.interfaces.redis.RedisService" ref="redisService" />
+    
+</beans>
