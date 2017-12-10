@@ -13,11 +13,11 @@ endpoints.health.sensitive = false
 spring.application.name=jiangxinDAO
 
 #mongodb config
-#spring.data.mongodb.uri=mongodb://admin:123456@192.168.4.21:27017/pro_zbt
-spring.data.mongodb.uri=mongodb://admin:123456@43.254.53.60:27017/pro_zbt
+#spring.data.mongodb.uri=mongodb://admin:123456@192.168.4.21:27017/xxx
+spring.data.mongodb.uri=mongodb://admin:123456@43.254.53.60:27017/xxx
 
 #log config
-logging.path=D:/data/logs/jiangxinDAO
+logging.path=D:/data/logs/xxx
 logging.level.root=DEBUG
 logging.level.org.springframework.web=DEBUG
 #logging.level.org.hibernate=ERROR
@@ -54,13 +54,12 @@ session.timeout=2000
 
 
 driver=com.mysql.jdbc.Driver
-#url=jdbc\:mysql\://127.0.0.1:3306/pro_zbt?useUnlcode\=1&characterEncoding\=utf-8&zeroDateTimeBehavior\=convertToNull&allowMultiQueries\=true&remarksReporting\=true
-url=jdbc\:mysql\://103.21.117.60:3306/pro_zbt?useUnlcode\=1&characterEncoding\=utf-8&zeroDateTimeBehavior\=convertToNull&allowMultiQueries\=true&remarksReporting\=true&tinyInt1isBit\=false
+url=jdbc\:mysql\://127.0.0.1:3306/xxx?characterEncoding=utf-8
 username1=root
-password1=ZBT123456test007
+password1=xxx
 
 zookeeper.address=zookeeper://192.168.99.100:2181
-zookeeper.properties=/usr/local/logs/jianxinDAO.properties
+zookeeper.properties=/usr/local/logs/xxx.properties
 
 
 #project2
@@ -96,12 +95,6 @@ redis.pool.testOnBorrow=1
 redis.pool.testOnReturn=true
 redis.timeout=2000
 
-#数据源
-driver=com.mysql.jdbc.Driver
-#url=jdbc\:mysql\://127.0.0.1:3306/pro_zbt?useUnlcode\=1&characterEncoding\=utf-8&zeroDateTimeBehavior\=convertToNull&allowMultiQueries\=true&remarksReporting\=true
-url=jdbc\:mysql\://103.21.117.60:3306/pro_zbt?useUnlcode\=1&characterEncoding\=utf-8&zeroDateTimeBehavior\=convertToNull&allowMultiQueries\=true&remarksReporting\=true&tinyInt1isBit\=false
-username1=root
-password1=ZBT123456test007
 
 <dependency>
 		    <groupId>com.ecwid.consul</groupId>
