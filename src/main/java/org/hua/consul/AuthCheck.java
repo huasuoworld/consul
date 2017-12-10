@@ -15,10 +15,10 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import weijiang.finance.service.TicketManagerService;
-import weijiang.finance.service.impl.CgbStoreTicketManagerServiceImpl;
-import weijiang.finance.util.ApplicationContextHolder;
-import weijiang.finance.util.RequestConvert;
+import com.hua.service.TicketManagerService;
+import com.hua.service.impl.CgbStoreTicketManagerServiceImpl;
+import com.hua.util.ApplicationContextHolder;
+import com.hua.util.RequestConvert;
 
 @Aspect
 @Component
