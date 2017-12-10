@@ -19,8 +19,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import weijiang.finance.constant.Constant;
-import weijiang.finance.service.KeyValueService;  
+import com.hua.constant.Constant;
+import com.hua.service.KeyValueService;  
   
 /** 
  * SSL Client 
