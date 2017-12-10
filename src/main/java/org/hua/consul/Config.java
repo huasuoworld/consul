@@ -1,4 +1,4 @@
-package weijiang.jiangxinDAO.boot;
+package com.hua.boot;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
