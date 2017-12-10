@@ -19,9 +19,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.jxdj.sso.constant.Constant;
-import com.jxdj.sso.service.TicketManagerService;
-import com.jxdj.sso.service.impl.TicketManagerServiceImpl;
+import com.hua.sso.constant.Constant;
+import com.hua.sso.service.TicketManagerService;
+import com.hua.sso.service.impl.TicketManagerServiceImpl;
 
 /** 
  * 
