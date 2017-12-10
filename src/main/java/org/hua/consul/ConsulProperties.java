@@ -34,7 +34,7 @@ public class ConsulProperties implements WebApplicationInitializer {
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		String host = Config.bootstrap.getProperty("spring.cloud.consul.host");
-    	String key = Config.bootstrap.getProperty("spring.cloud.consul.config.data-key");
+    	        String key = Config.bootstrap.getProperty("spring.cloud.consul.config.data-key");
 		LOGGER.info("Consul start!");
 		ConsulClient consulClient = new ConsulClient(host, 8500);
 		Response<GetValue> response = consulClient.getKVValue("configuration/application/" + key);
