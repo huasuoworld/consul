@@ -13,8 +13,7 @@ endpoints.health.sensitive = false
 spring.application.name=jiangxinDAO
 
 #mongodb config
-#spring.data.mongodb.uri=mongodb://admin:123456@192.168.4.21:27017/xxx
-spring.data.mongodb.uri=mongodb://admin:123456@43.254.53.60:27017/xxx
+spring.data.mongodb.uri=mongodb://admin:123456@127.0.0.1:27017/xxx
 
 #log config
 logging.path=D:/data/logs/xxx
