@@ -100,3 +100,5 @@ redis.timeout=2000
 		    <artifactId>consul-api</artifactId>
 		    <version>1.2.1</version>
 		</dependency>
+
+使用etcd+confd管理nginx配置
