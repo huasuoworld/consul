@@ -4,6 +4,7 @@ start F:/Program Files/MongoDB/Server/3.4/bin/mongod --maxConns 100 --logpath E:
 pause
 
 #springboot config
+logging.config=classpath:logback-spring.xml
 debug=true
 server.port=8087
 server.address=0.0.0.0
