@@ -103,3 +103,13 @@ redis.timeout=2000
 		</dependency>
 
 使用etcd+confd管理nginx配置
+
+
+导入本地jar
+mvn install:install-file
+   -Dfile=<path-to-file>
+   -DgroupId=<group-id>
+   -DartifactId=<artifact-id>
+   -Dversion=<version>
+   -Dpackaging=jar
+   -DgeneratePom=true
