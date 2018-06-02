@@ -1,0 +1,84 @@
+package org.constant;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+@Configuration
+public class SpringMybatisConfig {
+	
+	@Bean
+	public boolean refreshDB() {
+		boolean result = false;
+		customerRoutingDataSource();
+		result = true;
+		return result;
+	}
+
+	@Bean
+	public MapperScannerConfigurer mapperScannerConfigurer() {
+		MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
+		mapperScannerConfigurer.setBasePackage("xxx.dao");
+		return mapperScannerConfigurer;
+	}
+
+	@Bean
+	public SqlSessionFactoryBean sqlSessionFactoryBean() throws IOException {
+		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
+		
+		sessionFactory.setDataSource(customerRoutingDataSource());
+		sessionFactory.setConfigLocation(
+				new PathMatchingResourcePatternResolver().getResource("classpath:xxx/mybatis/mybatis-config.xml"));
+		sessionFactory.setMapperLocations(
+				new PathMatchingResourcePatternResolver().getResources("classpath*:xxx/mybatis/mapper/*.xml"));
+
+		return sessionFactory;
+	}
+	
+	@Bean
+	public CustomerRoutingDataSource customerRoutingDataSource() {
+		
+		String driverClassName = System.getProperty("driverClassName");
+		String url = System.getProperty("url");
+		String username = System.getProperty("username");
+		String password = System.getProperty("password");
+		
+		CustomerRoutingDataSource customerRoutingDataSource = new CustomerRoutingDataSource();
+		customerRoutingDataSource.setDefaultTargetDataSource(getDataSource(driverClassName, url, username, password));
+		Map<Object, Object> targetDataSource = new HashMap<Object, Object>();
+		
+		for(int wechatId = 11; wechatId < 110; wechatId = wechatId + 10) {
+			String driverClassName_ = System.getProperty("driverClassName" + wechatId);
+			String url_ = System.getProperty("url" + wechatId);
+			String username_ = System.getProperty("username" + wechatId);
+			String password_ = System.getProperty("password" + wechatId);
+			targetDataSource.put(wechatId, getDataSource(driverClassName_, url_, username_, password_));
+		}
+		customerRoutingDataSource.setTargetDataSources(targetDataSource);
+		customerRoutingDataSource.afterPropertiesSet();
+		return customerRoutingDataSource;
+	}
+	
+	@Bean
+	public DataSourceTransactionManager dataSourceTransactionManager() {
+		DataSourceTransactionManager manager = new DataSourceTransactionManager();
+		return manager;
+	}
+	
+	public DriverManagerDataSource getDataSource(String driverClassName, String url, String username, String password) {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName(driverClassName);
+		dataSource.setUrl(url);
+		dataSource.setUsername(username);
+		dataSource.setPassword(password);
+		return dataSource;
+	}
+}
