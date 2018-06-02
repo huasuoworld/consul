@@ -2,6 +2,8 @@ package org.constant;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -55,7 +57,13 @@ public class SpringMybatisConfig {
 		customerRoutingDataSource.setDefaultTargetDataSource(getDataSource(driverClassName, url, username, password));
 		Map<Object, Object> targetDataSource = new HashMap<Object, Object>();
 		
-		for(int wechatId = 11; wechatId < 110; wechatId = wechatId + 10) {
+		List<Integer> wechatIds = new LinkedList<Integer>();
+		wechatIds.add(11);
+		wechatIds.add(81);
+		wechatIds.add(101);
+		
+		for(int i = 11; i < wechatIds.size(); i++) {
+			Integer wechatId = wechatIds.get(i);
 			String driverClassName_ = System.getProperty("driverClassName" + wechatId);
 			String url_ = System.getProperty("url" + wechatId);
 			String username_ = System.getProperty("username" + wechatId);
