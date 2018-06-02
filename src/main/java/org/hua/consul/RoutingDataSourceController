@@ -1,0 +1,30 @@
+package org.constant;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class RoutingDataSourceController {
+
+	@RequestMapping("/")
+	@ResponseBody
+	public String refreshDB() {
+		return "true";
+	}
+	
+	//@Autowired
+	//private MemberService memberService;
+	
+	@RequestMapping("/")
+	@ResponseBody
+	public String findMemberById(Integer memberId) {
+		Integer wechatId = 11;
+		
+		CustomerContextHolder.setCustomerType(wechatId);
+		//TODO memberService.findMemberById(memberId);
+		return "true";
+	}
+	
+	
+}
