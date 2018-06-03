@@ -104,6 +104,9 @@ redis.timeout=2000
 
 使用etcd+confd管理nginx配置
 
+初始化mysql
+bin/mysqld --initialize-insecure --user=mysql
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
 
 导入本地jar
 mvn install:install-file
