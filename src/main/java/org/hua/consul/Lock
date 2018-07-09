@@ -1,0 +1,94 @@
+import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.ZooDefs;
+import org.apache.zookeeper.ZooKeeper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class Lock {
+	
+	private static final String[] SCHEDULE_CLASS = { "/AccessTokenRefreshTask" };
+	private static final String[] REFRESH_CLASS = { "/AccessTokenController" };
+	public static final String ALL = "ALL";
+	public static final String SCHEDULE = "SCHEDULE";
+	public static final String REFRESH = "REFRESH";
+	public static final String AccessTokenRefreshTask = "AccessTokenRefreshTask";
+	public static final String AccessTokenController = "AccessTokenController";
+	public static final String WechatTokenApplication = "WechatTokenApplication";
+	
+	private final static Logger log = LoggerFactory.getLogger(Lock.class);
+	private ZooKeeper zooKeeper; 
+	private String path;
+	private boolean pass = false;
+	public Lock(ZooKeeper zooKeeper, String className) {
+		this.zooKeeper = zooKeeper;
+		this.path = "/" + className;
+	}
+
+	public void lock() {
+		byte[] data = "locked".getBytes();
+		try {
+			log.info("begin lock!" + path);
+			zooKeeper.create(path, data, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+			this.pass = true;
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+	}
+
+	public void unlock() {
+		if(pass) {
+			try {
+				//锁20分钟后，删除节点
+				Thread.sleep(1000 * 60 * 20);
+				zooKeeper.delete(path, -1);
+				log.info("unlock successful" + path);
+			} catch (Exception e) {
+				log.error(e.getMessage(), e);
+			}
+		}
+		log.info("end lock!" + path);
+	}
+	
+	public void unlockWithOutWait() {
+		if(pass) {
+			try {
+				zooKeeper.delete(path, -1);
+				log.info("unlockWithOutWait successful!" + path);
+			} catch (Exception e) {
+				log.error(e.getMessage(), e);
+			}
+		}
+		log.info("end lock!" + path);
+	}
+	
+	public static void clear(ZooKeeper zooKeeper, String clearType) {
+		try {
+			if(ALL.equals(clearType) || SCHEDULE.equals(clearType)) {
+				for(String path: SCHEDULE_CLASS) {
+					zooKeeper.delete(path, -1);
+					log.info("锁释放成功" + path);
+				}
+			}
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+		}
+		try {
+			if(ALL.equals(clearType) || REFRESH.equals(clearType)) {
+				for(String path: REFRESH_CLASS) {
+					zooKeeper.delete(path, -1);
+					log.info("锁释放成功" + path);
+				}
+			}
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+		}
+	}
+
+	public boolean isPass() {
+		return pass;
+	}
+
+	public void setPass(boolean pass) {
+		this.pass = pass;
+	}
+}
