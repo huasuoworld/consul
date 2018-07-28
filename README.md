@@ -11,7 +11,7 @@ server.address=0.0.0.0
 server.session.timeout=10
 server.tomcat.uri-encoding=UTF-8
 endpoints.health.sensitive = false
-spring.application.name=jiangxinDAO
+spring.application.name=xxxDAO
 
 #mongodb config
 spring.data.mongodb.uri=mongodb://admin:123456@127.0.0.1:27017/xxx
