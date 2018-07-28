@@ -1,0 +1,12 @@
+<repositories>
+	    <repository>
+	        <id>social-wechat-master</id>
+	        <url>https://raw.githubusercontent.com/huasuoworld/social-wechat/master</url>
+	        <releases>
+	            <enabled>true</enabled>
+	        </releases>
+	        <snapshots>
+	            <enabled>true</enabled>
+	        </snapshots>
+	    </repository>
+	</repositories>
