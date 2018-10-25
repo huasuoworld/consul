@@ -43,6 +43,8 @@ redis.timeout=2000
 #test
 session.pool.maxTotal=600
 session.pool.maxIdle=300
+
+https://docs.docker.com/engine/swarm/ingress/#publish-a-port-for-a-service
 session.pool.maxWaitMillis=50
 session.pool.minIdle=0
 session.host=192.168.99.100
